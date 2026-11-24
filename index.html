@@ -30,8 +30,30 @@
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
     .about-grid img{width:100%;height:470px;object-fit:cover;object-position:center 25%}
     .about-copy{font-size:16px;line-height:1.9;color:#5d5149}.about-copy strong{color:var(--ink)}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-    .stat{background:var(--cream);padding:28px 24px}.stat strong{display:block;font:500 42px 'Playfair Display',serif;color:var(--wine)}.stat span{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .stat{background:var(--cream);padding:27px 24px;border:1.5px solid var(--ink);border-radius:17px;min-height:142px;transform:translateY(22px);opacity:0;transition:transform .7s cubic-bezier(.2,.75,.2,1),opacity .7s ease,box-shadow .25s ease}
+    .stat strong{display:block;font:700 clamp(34px,4.5vw,54px)/1 'DM Sans',sans-serif;color:var(--ink);letter-spacing:-.06em;margin-bottom:12px}
+    .stat span{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+    .stat:nth-child(1){background:#7a263c;color:white}.stat:nth-child(1) strong,.stat:nth-child(1) span{color:white}
+    .stat:nth-child(2){background:#f4ef9c}.stat:nth-child(3){background:#fff}
+    .stat.is-visible{transform:translateY(0);opacity:1}
+    .stat:hover{box-shadow:8px 8px 0 rgba(41,35,31,.13);transform:translateY(-5px)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.75,.2,1)}
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+    .eyebrow{animation:eyebrowIn .8s both}
+    @keyframes eyebrowIn{from{opacity:0;letter-spacing:.45em;transform:translateY(8px)}to{opacity:1;letter-spacing:.22em;transform:translateY(0)}}
+    .hero h1{animation:titleIn 1s .12s both}
+    .hero .intro{animation:fadeUp .9s .3s both}
+    .hero-photo img{animation:photoIn 1.1s .15s both}
+    .hero-photo:after{animation:frameIn 1s .35s both}
+    @keyframes titleIn{from{opacity:0;transform:translateY(35px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes photoIn{from{opacity:0;transform:translateX(30px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}
+    @keyframes frameIn{from{opacity:0;transform:translate(14px,14px)}to{opacity:1;transform:translate(0,0)}}
+    .section h2{transition:color .3s ease}.section h2:hover{color:var(--wine)}
+    .work-card{transition:transform .3s ease,box-shadow .3s ease}.work-card:hover{transform:translateY(-7px);box-shadow:0 14px 30px rgba(41,35,31,.10)}
+    .btn{transition:transform .2s ease,background .2s ease,box-shadow .2s ease}.btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(41,35,31,.16)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal,.stat{opacity:1!important;transform:none!important}}
     .profile-label{margin:0 0 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--wine);font-weight:700}
     .duo{display:grid;grid-template-columns:.8fr 1.2fr;gap:42px;align-items:center;background:#806754;color:#fff;padding:38px}
     .duo img{width:100%;max-height:220px;object-fit:contain;background:#806754}.duo h3{font:500 42px 'Playfair Display',serif;margin:0 0 12px}.duo p{line-height:1.8;color:#f0e7df}
@@ -39,15 +61,24 @@
     .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.work-card{background:var(--cream);padding:26px;min-height:190px;border-top:3px solid var(--wine)}
     .work-card h3{font:500 25px 'Playfair Display',serif;margin:12px 0}.work-card p{color:var(--muted);font-size:14px;line-height:1.7;margin:0}
     .gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px}.gallery img{width:100%;height:440px;object-fit:cover}.gallery img:first-child{object-position:center 25%}
+
+    .content-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .content-card{display:block;background:var(--cream);border:1px solid var(--line);padding:10px;border-radius:14px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
+    .content-card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(41,35,31,.12)}
+    .content-card img{display:block;width:100%;height:390px;object-fit:cover;object-position:center top;border-radius:8px;background:#e5d7ca}
+    .content-card .content-caption{padding:13px 6px 5px}
+    .content-card strong{display:block;font:500 20px 'Playfair Display',serif;margin-bottom:5px}
+    .content-card span{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .content-note{font-size:14px;line-height:1.8;color:var(--muted);max-width:720px;margin-top:20px}
     .contact{background:var(--wine);color:#fff;padding:66px 0}.contact h2{max-width:700px}.contact p{color:#eadde0;line-height:1.8;max-width:580px;margin:18px 0 28px}.contact .btn{background:var(--cream);color:var(--wine);border-color:var(--cream)}
     footer{padding:24px 0;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    @media(max-width:760px){.wrap{width:min(100% - 32px,560px)}.navlinks{gap:12px;font-size:10px}.hero{grid-template-columns:1fr;gap:34px;padding:44px 0 56px}.hero-photo img{height:470px}.hero-photo{margin-left:12px}.photo-note{left:-12px}.section{padding:54px 0}.section-head{display:block}.section-head p{margin-top:16px}.about-grid,.duo{grid-template-columns:1fr}.about-grid img{height:390px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}.work-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.gallery img{height:420px}.duo{padding:26px}.duo h3{font-size:36px}}
+    @media(max-width:760px){.wrap{width:min(100% - 32px,560px)}.navlinks{gap:12px;font-size:10px}.hero{grid-template-columns:1fr;gap:34px;padding:44px 0 56px}.hero-photo img{height:470px}.hero-photo{margin-left:12px}.photo-note{left:-12px}.section{padding:54px 0}.section-head{display:block}.section-head p{margin-top:16px}.about-grid,.duo{grid-template-columns:1fr}.about-grid img{height:390px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}.work-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.gallery img{height:420px}.content-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.content-card img{height:330px}.duo{padding:26px}.duo h3{font-size:36px}}
   </style>
 </head>
 <body>
   <header class="wrap nav">
     <a class="brand" href="#">TELMA FREITAS</a>
-    <nav class="navlinks"><a href="#sobre">Sobre</a><a href="#numeros">Números</a><a href="#duacorp">DUACORP</a><a href="#parcerias">Parcerias</a></nav>
+    <nav class="navlinks"><a href="#sobre">Sobre</a><a href="#numeros">Números</a><a href="#duacorp">DUACORP</a><a href="#conteudo">Conteúdo</a><a href="#parcerias">Parcerias</a></nav>
   </header>
 
   <main>
@@ -67,7 +98,7 @@
       </div>
     </section>
 
-    <section class="section" id="sobre">
+    <section class="section reveal" id="sobre">
       <div class="wrap">
         <div class="section-head"><div><div class="eyebrow">Quem está por trás do perfil</div><h2>Profissão com<br>personalidade.</h2></div><p>Uma trajetória que une cuidado, empreendedorismo e comunicação próxima, com espaço para conhecimento, cotidiano e boas histórias.</p></div>
         <div class="about-grid">
@@ -82,18 +113,18 @@
       </div>
     </section>
 
-    <section class="section" id="numeros">
+    <section class="section reveal" id="numeros">
       <div class="wrap">
         <div class="section-head"><div><div class="eyebrow">Instagram · @telmafs</div><h2>Alcance e comunidade.</h2></div><p>Números informados pelos Insights do Instagram. Referência: últimos 30 dias, em 24/11/2026.</p></div>
         <div class="stats">
-          <div class="stat"><strong>11.213</strong><span>Seguidores</span></div>
-          <div class="stat"><strong>70.898</strong><span>Visualizações · 30 dias</span></div>
-          <div class="stat"><strong>4.534</strong><span>Publicações</span></div>
+          <div class="stat"><strong data-count="11213">0</strong><span>Seguidores</span></div>
+          <div class="stat"><strong data-count="70898">0</strong><span>Visualizações · 30 dias</span></div>
+          <div class="stat"><strong data-count="4534">0</strong><span>Publicações</span></div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="duacorp">
+    <section class="section reveal" id="duacorp">
       <div class="wrap">
         <div class="duo">
           <div><img src="assets/duacorp-logo.jpeg" alt="Logo DUACORP"></div>
@@ -108,7 +139,60 @@
       </div>
     </section>
 
-    <section class="section" id="parcerias">
+
+    <section class="section reveal" id="conteudo">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Conteúdo autoral · DUACORP</div><h2>Conhecimento que<br>vira conversa.</h2></div>
+          <p>Uma seleção de materiais educativos e apresentações que traduzem minha forma de comunicar fisioterapia, movimento e cuidado com a dor.</p>
+        </div>
+        <div class="content-gallery">
+          <a class="content-card" href="assets/campanha-fisioterapia-online.jpeg" target="_blank" rel="noopener">
+            <img src="assets/campanha-fisioterapia-online.jpeg" alt="Material de divulgação de fisioterapia online da DUACORP">
+            <div class="content-caption"><strong>Fisioterapia onde você estiver</strong><span>Apresentação de serviço</span></div>
+          </a>
+          <a class="content-card" href="assets/carrossel-apresentacao-telma.jpeg" target="_blank" rel="noopener">
+            <img src="assets/carrossel-apresentacao-telma.jpeg" alt="Carrossel de apresentação profissional de Telma">
+            <div class="content-caption"><strong>Quem está por trás do cuidado</strong><span>Apresentação profissional</span></div>
+          </a>
+          <a class="content-card" href="assets/carrossel-cuidado-com-a-dor-01.jpeg" target="_blank" rel="noopener">
+            <img src="assets/carrossel-cuidado-com-a-dor-01.jpeg" alt="Carrossel educativo sobre a experiência da dor">
+            <div class="content-caption"><strong>Como enxergo a dor</strong><span>Educação em dor</span></div>
+          </a>
+          <a class="content-card" href="assets/carrossel-cuidado-com-a-dor-02.jpeg" target="_blank" rel="noopener">
+            <img src="assets/carrossel-cuidado-com-a-dor-02.jpeg" alt="Carrossel sobre escuta e cuidado individualizado">
+            <div class="content-caption"><strong>Meu jeito de cuidar</strong><span>Comunicação e cuidado</span></div>
+          </a>
+          <a class="content-card" href="assets/educativo-dor-biopsicossocial.jpeg" target="_blank" rel="noopener">
+            <img src="assets/educativo-dor-biopsicossocial.jpeg" alt="Infográfico sobre fatores biológicos, psicológicos e sociais da dor">
+            <div class="content-caption"><strong>Uma visão biopsicossocial da dor</strong><span>Conteúdo educativo</span></div>
+          </a>
+          <a class="content-card" href="assets/carrossel-cuidado-integral.jpeg" target="_blank" rel="noopener">
+            <img src="assets/carrossel-cuidado-integral.jpeg" alt="Carrossel sobre cuidado integral e objetivos terapêuticos">
+            <div class="content-caption"><strong>Cuidado integral</strong><span>Educação em saúde</span></div>
+          </a>
+          <a class="content-card" href="assets/educativo-objetivos-do-cuidado.jpeg" target="_blank" rel="noopener">
+            <img src="assets/educativo-objetivos-do-cuidado.jpeg" alt="Peça educativa sobre objetivos do cuidado fisioterapêutico">
+            <div class="content-caption"><strong>O que buscamos juntas?</strong><span>Objetivos funcionais</span></div>
+          </a>
+          <a class="content-card" href="assets/educativo-cada-dor-e-unica.jpeg" target="_blank" rel="noopener">
+            <img src="assets/educativo-cada-dor-e-unica.jpeg" alt="Peça educativa sobre a singularidade da experiência dolorosa">
+            <div class="content-caption"><strong>Cada dor é única</strong><span>Educação em dor</span></div>
+          </a>
+          <a class="content-card" href="assets/educativo-cuidado-integral.jpeg" target="_blank" rel="noopener">
+            <img src="assets/educativo-cuidado-integral.jpeg" alt="Peça sobre ferramentas de cuidado integral">
+            <div class="content-caption"><strong>Ferramentas para cuidar</strong><span>Abordagem terapêutica</span></div>
+          </a>
+          <a class="content-card" href="assets/educativo-como-e-o-cuidado.jpeg" target="_blank" rel="noopener">
+            <img src="assets/educativo-como-e-o-cuidado.jpeg" alt="Peça explicativa sobre as etapas do cuidado fisioterapêutico">
+            <div class="content-caption"><strong>Como é o nosso cuidado?</strong><span>Jornada do atendimento</span></div>
+          </a>
+        </div>
+        <p class="content-note">Toque ou clique em qualquer peça para visualizar a imagem em tamanho maior. Os materiais apresentados são exemplos de conteúdo e comunicação da DUACORP.</p>
+      </div>
+    </section>
+
+    <section class="section reveal" id="parcerias">
       <div class="wrap">
         <div class="section-head"><div><div class="eyebrow">Projetos e colaborações</div><h2>Vamos criar<br>algo relevante?</h2></div><p>Aberta a conexões com marcas e projetos alinhados a saúde, bem-estar, movimento, lifestyle, beleza, experiências e cotidiano.</p></div>
         <div class="work-grid">
@@ -139,5 +223,50 @@
     </section>
   </main>
   <footer class="wrap"><span>© 2026 Telma Freitas Santos</span><span>São Bernardo do Campo · SP</span><span>Mídia kit digital</span></footer>
+  <script>
+    (function(){
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealItems = document.querySelectorAll('.reveal, .stat');
+      if ('IntersectionObserver' in window && !reduce) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              if (entry.target.classList.contains('stat')) {
+                entry.target.style.transitionDelay = (Array.from(entry.target.parentNode.children).indexOf(entry.target) * 120) + 'ms';
+              }
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {threshold: 0.14});
+        revealItems.forEach(item => observer.observe(item));
+      } else {
+        revealItems.forEach(item => item.classList.add('is-visible'));
+      }
+
+      const counters = document.querySelectorAll('[data-count]');
+      const format = n => Math.round(n).toLocaleString('pt-BR');
+      function animateCounter(el){
+        const target = Number(el.getAttribute('data-count'));
+        if (reduce) { el.textContent = format(target); return; }
+        const start = performance.now(), duration = 1500;
+        function tick(now){
+          const t = Math.min((now-start)/duration, 1);
+          const eased = 1 - Math.pow(1-t, 3);
+          el.textContent = format(target * eased);
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      if ('IntersectionObserver' in window && !reduce) {
+        const counterObserver = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting){ animateCounter(entry.target); obs.unobserve(entry.target); }
+          });
+        }, {threshold:0.6});
+        counters.forEach(el => counterObserver.observe(el));
+      } else { counters.forEach(animateCounter); }
+    })();
+  </script>
 </body>
 </html>
